@@ -5,12 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Update Employee</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <div class="container mt-5">
         <h2>Update Employee</h2>
-        <form th:action="@{/update/{id}(id=${employee.id})}" method="post">
-            <input type="hidden" name="_method" value="put" />
+     <form action="/employees/update/{id}" th:action="@{/employees/update/{id}(id=${employee.id})}" method="post">
+<input type="hidden" name="_method" value="PUT">
+ 
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" class="form-control" id="name" name="name" th:value="${employee.name}" required>
@@ -32,13 +34,13 @@
             </div>
             <div class="form-group">
 				<label for="country">Country:</label> <select class="form-control"
-					id="country" name="country" required>
+					id="country" name="country" >
 					<option value="" disabled selected>Select a country</option>
 				</select>
 			</div>
 			<div class="form-group">
 				<label for="state">State:</label> <select class="form-control"
-					id="state" name="state" required>
+					id="state" name="state" >
 					<option value="" disabled selected>Select a state</option>
 				</select>
 			</div>
@@ -62,6 +64,7 @@
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>
+    
     <script>
     $(document).ready(function() {
         function populateCountries() {
@@ -103,7 +106,7 @@ function populateStates(countryId) {
 }
 
 
-        populateCountries();
+populateCountries();
 
         $('#country').change(function() {
             var selectedCountryId = $(this).val();
