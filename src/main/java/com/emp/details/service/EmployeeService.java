@@ -15,6 +15,7 @@ public class EmployeeService {
 	private EmployeeRepository employeeRepository;
 	
 	 public List<Employees> getAllEmployees() {
+		 
 	        return employeeRepository.findAll();
 	    }
 
@@ -26,7 +27,7 @@ public class EmployeeService {
 	    	Employees existingEmployee = employeeRepository.findById(id)
 	                .orElseThrow(() -> new NotFoundException());
 	        existingEmployee.setName(updatedEmployee.getName());
-	        existingEmployee.setDateOfBirth(updatedEmployee.getDateOfBirth());
+	        existingEmployee.setDob(updatedEmployee.getDob());
 	        existingEmployee.setGender(updatedEmployee.getGender());
 	        existingEmployee.setCountry(updatedEmployee.getCountry());
 	        existingEmployee.setState(updatedEmployee.getState());
@@ -44,4 +45,10 @@ public class EmployeeService {
 	        existingEmployee.setActive(active);
 	        return employeeRepository.save(existingEmployee);
 	    }
+
+	    public Employees getEmployeeById(Long id) throws NotFoundException {
+	        return employeeRepository.findById(id)
+	                .orElseThrow(() -> new NotFoundException());
+	    }
+
 }

@@ -18,7 +18,8 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
-import io.swagger.annotations.ApiModelProperty;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -37,10 +38,9 @@ public class Employees {
     private String name;
 
     @Column(name = "date_of_birth")
-    private Date dateOfBirth;
+    private String dob;
 
-   // @NotNull(message = "GenderType cannot be blank")
-	@ApiModelProperty(value = "Valid status", required = true, allowableValues = "MALE,FEMALE,TRANSGENDER")
+	
 	@Enumerated(EnumType.STRING)
 	@Column(name = "gender")
     private GenderType gender;
@@ -59,6 +59,7 @@ public class Employees {
     @Column(name = "address_line_2")
     private String addressLine2;
 
+    @Column(name = "city")
     private String city;
 
     @Column(name = "about_me", columnDefinition = "TEXT")
