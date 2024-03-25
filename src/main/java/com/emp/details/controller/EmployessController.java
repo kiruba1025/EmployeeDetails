@@ -66,7 +66,7 @@ public class EmployessController {
     public String updateEmployee(@PathVariable Long id, @ModelAttribute Employees employee) {
         try {
             employeeService.updateEmployee(id, employee);
-            return "redirect:/"; 
+            return "redirect:/employees/";
         } catch (NotFoundException e) {
             return "errorPage";
         }
