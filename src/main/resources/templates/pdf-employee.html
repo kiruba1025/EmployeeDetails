@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1" />
+<title>Employee List</title>
+<style>
+.text-center {
+	text-align: center;
+}
+
+table, td, th {
+	border: 1px solid;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+th,td {
+padding:8px 5px;
+}
+</style>
+</head>
+<body>
+	<h1 class="text-center">Employee List</h1>
+	<div class="container">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Date of Birth</th>
+					<th>Gender</th>
+					<th>Address Line 1</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="employee : ${employees}">
+					<td th:text="${employee.id}"></td>
+					<td th:text="${employee.name}"></td>
+					<td th:text="${employee.dob}"></td>
+					<td th:text="${employee.gender}"></td>
+					<td th:text="${employee.addressLine1}"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
