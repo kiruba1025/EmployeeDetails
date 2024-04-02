@@ -51,4 +51,8 @@ public class EmployeeService {
 	                .orElseThrow(() -> new NotFoundException());
 	    }
 
+		public List<Employees> getAll() {
+			return employeeRepository.findAll();
+		}
+
 }
